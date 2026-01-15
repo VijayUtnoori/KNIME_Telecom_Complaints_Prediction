@@ -1,129 +1,91 @@
 # KNIME_Telecom_Complaints_Prediction
 This is Telecom_Complaints_Prediction Project Build on KNIME
 
-📡 KNIME Telecom Complaint Prediction
-Overview
+# KNIME Telecom Complaint Prediction
 
-This repository contains an end-to-end machine learning workflow built using KNIME Analytics Platform to predict whether a telecom customer is likely to raise a complaint. The project emphasizes leakage-safe preprocessing, class imbalance handling, and robust evaluation using Logistic Regression.
+This repository contains a **KNIME Analytics Platform machine learning workflow** for predicting whether a telecom customer is likely to raise a complaint.  
+The project demonstrates a complete **end-to-end ML pipeline** built using best practices in KNIME.
 
-Objective
+---
 
-To develop a binary classification model that predicts customer complaints (Yes / No) based on historical telecom customer behavior, service usage, and subscription details.
+## 📌 Project Overview
 
-Dataset
+The main objectives of this project are to:
 
-File: telecom_data_clean.csv
+- Load and clean telecom customer data
+- Perform leakage-safe preprocessing and feature preparation
+- Handle class imbalance using SMOTE
+- Train a Logistic Regression classification model
+- Evaluate model performance using standard metrics
+- Export predictions and evaluation results
 
-Type: Customer-level tabular dataset
+This project is designed to showcase how a **structured and production-style ML workflow** can be built visually in KNIME.
 
-Target Variable:
+---
 
-Original: complaint_flag (Yes / No)
+## 🧠 Workflow Structure
 
-Engineered: complaint_flag_num (1 / 0)
+The KNIME workflow is organized into the following logical blocks:
 
-All data leakage–prone columns (IDs, timestamps, complaint-specific fields) are removed prior to modeling to ensure realistic performance.
+- **Input & Cleaning**
+  - CSV Reader
+  - Column filtering to remove leakage-prone fields
+  - Target conversion (Yes/No → 1/0)
 
-KNIME Workflow Summary
-1. Data Preparation
+- **Preprocessing**
+  - Missing value handling
+  - Domain calculation
+  - One-hot encoding
+  - Z-score normalization
 
-CSV Reader
+- **Split & Balance**
+  - Stratified train-test split (80/20)
+  - SMOTE applied only on training data
 
-Leakage-safe Column Filtering
+- **Model Training**
+  - Logistic Regression with L2 regularization
+  - Stable convergence using higher iterations
 
-Target encoding using Rule Engine
+- **Evaluation & Export**
+  - Confusion matrix and performance metrics
+  - ROC curve and AUC
+  - CSV export of predictions and results
 
-Missing value handling (Mean / Most Frequent)
+---
 
-2. Feature Engineering
+## 📊 Model Performance (Test Data)
 
-Domain Calculator for category stability
+- Accuracy: **86.7%**
+- Precision (Complaint class): **95.7%**
+- Recall (Complaint class): **88%**
+- F1 Score: **91.7%**
+- ROC-AUC: Strong class separability observed
 
-One-Hot Encoding (One to Many)
+---
 
-Z-score normalization for numeric features
+## 📁 Outputs
 
-3. Train–Test Split & Class Balancing
+The workflow generates the following output files:
 
-Stratified 80/20 split (fixed seed)
+- `knime_predictions.csv`
+- `knime_confusion_matrix.csv`
+- `knime_model_metrics.csv`
 
-SMOTE applied only on training data
+These outputs can be reused for reporting or dashboarding.
 
-Balanced training dataset (50:50)
+---
 
-4. Model Training
+## 🛠 Tools Used
 
-Algorithm: Logistic Regression
+- KNIME Analytics Platform
+- Logistic Regression
+- SMOTE
+- One-Hot Encoding
+- Z-score Normalization
 
-Regularization: L2 (Ridge / Uniform Gauss)
+---
 
-Iterations: 1000 (for stable convergence)
+## 👤 Author
 
-5. Evaluation
-
-Confusion Matrix
-
-Accuracy, Precision, Recall, F1-score
-
-Cohen’s Kappa
-
-ROC Curve with AUC
-
-Model Performance (Test Data)
-
-Accuracy: 86.7%
-
-Precision (Complaint class): 95.7%
-
-Recall (Complaint class): 88%
-
-F1 Score: 91.7%
-
-AUC: Strong class separability observed
-
-Outputs
-
-The following outputs are exported for reporting and analysis:
-
-knime_predictions.csv
-
-knime_confusion_matrix.csv
-
-knime_model_metrics.csv
-
-Tools & Technologies
-
-KNIME Analytics Platform
-
-Logistic Regression
-
-SMOTE (Class Imbalance Handling)
-
-One-Hot Encoding
-
-Z-score Normalization
-
-Key Takeaways
-
-Preventing data leakage is critical for valid ML models
-
-Class imbalance must be handled carefully (SMOTE on training only)
-
-Regularization improves Logistic Regression stability
-
-KNIME enables clean, production-style ML pipelines without code
-
-Future Enhancements
-
-Feature importance analysis
-
-Hyperparameter optimization
-
-Model comparison (Random Forest, XGBoost)
-
-Deployment via KNIME WebPortal or API
-
-Author
-
-Vijay Utnoori
+**Vijay Utnoori**  
 Machine Learning | Data Analytics | KNIME
