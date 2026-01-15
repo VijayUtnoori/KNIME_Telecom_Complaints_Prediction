@@ -1,5 +1,3 @@
-# KNIME_Telecom_Complaints_Prediction
-This is Telecom_Complaints_Prediction Project Build on KNIME
 
 # KNIME Telecom Complaint Prediction
 
@@ -59,7 +57,8 @@ The KNIME workflow is organized into the following logical blocks:
 - Precision (Complaint class): **95.7%**
 - Recall (Complaint class): **88%**
 - F1 Score: **91.7%**
-- ROC-AUC: Strong class separability observed
+- ROC-AUC: **0.960**
+
 
 ---
 
